@@ -3,7 +3,7 @@ import BottomView from "@/views/BottomView.vue";
 </script>
 
 <template>
-<div>
+<div class="IndexPage">
   <router-view></router-view>
   <BottomView></BottomView>
 
@@ -11,5 +11,7 @@ import BottomView from "@/views/BottomView.vue";
 </template>
 
 <style scoped>
-
+.IndexPage{
+  height: 100%;
+}
 </style>

@@ -29,13 +29,19 @@ let content=ref([
 
 function changeIndex(index:number){
   indexRef.value=index
+  content.value=[
+      {name:'首页',imgPath: getArray(index)[0]},
+      {name: '面经',imgPath:getArray(index)[1]},
+      {name: '收藏',imgPath: getArray(index)[2]},
+      {name: '我的',imgPath: getArray(index)[3]}
+  ]
 }
 </script>
 
 <template>
 <el-row justify="center" :gutter="10">
-  <el-col :span="6" v-for="(item,index) in content" :key="index"  justify-center="justify-center" @click="indexRef=index">
-    <el-row justify="center" @click="console.log('click')">
+  <el-col :span="6" v-for="(item,index) in content" :key="index"  justify-center="justify-center" @click="changeIndex(index)">
+    <el-row justify="center" @click="console.log(`${JSON.stringify(content)}`)">
       <el-image :src="item.imgPath" alt="" :style="{width:'30px'}" fit="contain"/>
     </el-row>
     <el-row justify="center">

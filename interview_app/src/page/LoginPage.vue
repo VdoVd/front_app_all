@@ -2,14 +2,21 @@
 import {ElButton, ElMessageBox} from "element-plus";
 import axios from "axios";
 import {ref} from "vue";
-import type {loginResponseData} from "@/common/data";
-import {useUserStore} from "@/stores/userStore";
+// import type {loginResponseData} from "@/common/data";
+import {tokenStore, useUserStore} from "@/stores/userStore";
 import {useCounterStore} from "@/stores/counter";
-import {storeToRefs} from "pinia";
-import pinia from "@/stores/piniaInstance";
+import router from "@/router";
+// import {storeToRefs} from "pinia";
+// import pinia from "@/stores/piniaInstance";
 const username = ref('hmheima')
 const password = ref('Hmheima%123')
 const checked1 = ref(false)
+
+function routerFunc() {
+  setTimeout(() => {
+    window.location.href = '/home'
+  }, 7000)
+}
 
 let login=()=>{
   function loginFun() {
@@ -18,11 +25,8 @@ let login=()=>{
       password: password.value
     }).then(res => {
       const userLoginData = res.data.data
-      const userStore = useUserStore(pinia)
-      console.info(JSON.stringify(userStore.userLogin))
+      const userStore = useUserStore()
       userStore.storeLogin(userLoginData)
-      console.info('after:'+JSON.stringify(userStore.userLogin))
-
     })
 
     ElMessageBox.alert('登录成功', '提示', {confirmButtonText: '确定', type: 'success'})
@@ -60,10 +64,8 @@ let login=()=>{
         // on cancel
       });
   }else if(username.value!==''&&password.value!==''&&checked1.value===true){
+    router.push({path:'/home'})
     loginFun()
-    setTimeout(()=>{
-      window.location.href='/home'
-    },1000)
   }
 
 }
@@ -98,6 +100,7 @@ let login=()=>{
     <el-row justify="center">
       <el-button type="primary" size="large" style="width: 240px" @click="login">登录</el-button>
     </el-row>
+    <el-button @click="routerFunc">switch</el-button>
   </el-col>
 
 </template>
