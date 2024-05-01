@@ -10,6 +10,16 @@ export interface loginResponseData {
     clockinNumbers: number;
 }
 
+//打卡
+export interface ClockInData {
+    nickName: string;
+    avatar: string;
+    backgroudPicture: string;
+    clockinNumbers: number;
+    clockinTotal: number;
+    miniAppPicture: string;
+}
+
 export interface response<T> {
     success: boolean;
     code: number;
@@ -83,4 +93,16 @@ export interface questionDetailData {
     views: number;
     createdAt: string;
     relatedQuestions: RelatedQuestion[];
+}
+
+export interface ClockInDate {
+    id: string;
+    createdAt: string;
+}
+
+export interface ClockInDateList {
+    flag: boolean;
+    clockinNumbers: number;
+    totalClockinNumber: number;
+    clockins: ClockInDate[];
 }

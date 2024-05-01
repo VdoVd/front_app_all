@@ -34,6 +34,14 @@ const router = createRouter({
       path:'/quesD/:id',
       component:()=>import('../page/questionDetailPage.vue'),
       props:true
+    },
+    {
+      path:'/search',
+      component:()=>import('../page/searchPage.vue')
+    },
+    {
+      path:'/clock',
+      component:()=>import('../page/clockInPage.vue')
     }
   ]
 })

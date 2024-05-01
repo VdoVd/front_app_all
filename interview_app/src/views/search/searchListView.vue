@@ -7,17 +7,29 @@ import type {loginResponseData, subListData} from "@/common/data";
 import router from "@/router";
 import {useIdsStore} from "@/stores/homeListIds";
 const list=ref<subListData[]>([])
+const sort=ref('')
+const props=defineProps(['sort'])
+import {watch} from "vue";
+watch(props.sort,() => {
+  console.log('sort',props.sort)
+  sort.value=props.sort
+  isLoadingSub.value=true
+  req()
+})
+if(props.sort===undefined){
+  sort.value='vue'
+}else {
+  sort.value=props.sort
+}
 
 const isLoadingSub=ref(true)
-const props=defineProps(['id'])
-let id=props.id
 const idsStore=useIdsStore()
 const user=useUserStore()
 let page=ref(1)
 //列表数据别看错了！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
 const req=()=>{
 
-  axios.get(`https://api-harmony-teach.itheima.net/hm/question/list?questionBankType=10&type=${id}&page=${page.value}`,{
+  axios.get(`https://api-harmony-teach.itheima.net/hm/question/list?questionBankType=10&sort=${sort.value}`,{
 
     headers:{
 
@@ -34,7 +46,7 @@ const req=()=>{
     // console.log(JSON.stringify(list.value))
     idsStore.ids=list.value.map(item=>parseInt(item.id))
 
-    console.log(`ids:${JSON.stringify(idsStore.ids)}`)
+    console.log(`list  ids:${JSON.stringify(idsStore.ids)}`)
 
   })
 
@@ -52,22 +64,22 @@ let timeId = 0;
 
 function exec() {
   console.log(`${timeId}`)
-    clearTimeout(timeId)
-    timeId = setTimeout(() => {
-      loadMore()
-    }, 2000)
+  clearTimeout(timeId)
+  timeId = setTimeout(() => {
+    loadMore()
+  }, 2000)
 }
 
 window.onscroll=()=>{
   console.log('scroll')
-  // exec();
+  exec();
 }
 
 </script>
 //tab下面的内容
 <template>
   <el-empty v-if="isLoadingSub===true" description="加载中..."/>
-  <div class="home-list-view" v-if="isLoadingSub===false" ref="containerRef"  style="height: 500px;">
+  <div class="home-list-view" v-if="isLoadingSub===false" ref="containerRef"  >
     <homeItemView v-for="(itemForIt) in list" :item="itemForIt" />
   </div>
 </template>

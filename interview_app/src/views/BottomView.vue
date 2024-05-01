@@ -2,6 +2,7 @@
 
 import {getAssetsFile} from "@/common/utils";
 import {ref} from "vue";
+import router from "@/router";
 let indexRef=ref(0)
 let homePath=ref(['ic_tabbar_home.png','ic_tabbar_home_select.png'])
 let interviewPath=ref(['ic_tabbar_project.png','ic_tabbar_project_select.png'])
@@ -35,6 +36,13 @@ function changeIndex(index:number){
       {name: '收藏',imgPath: getArray(index)[2]},
       {name: '我的',imgPath: getArray(index)[3]}
   ]
+  if(index===0){
+    router.push({path:'/home'})
+    console.log('jump to home')
+  }else if(index===3){
+    router.push({path:'/mine'})
+    console.log('jump to mine')
+  }
 }
 </script>
 

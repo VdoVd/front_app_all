@@ -24,6 +24,7 @@ let login=()=>{
       username: username.value,
       password: password.value
     }).then(res => {
+      router.push({path:'/home'})
       const userLoginData = res.data.data
       const userStore = useUserStore()
       userStore.storeLogin(userLoginData)
@@ -64,7 +65,6 @@ let login=()=>{
         // on cancel
       });
   }else if(username.value!==''&&password.value!==''&&checked1.value===true){
-    router.push({path:'/home'})
     loginFun()
   }
 
