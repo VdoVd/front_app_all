@@ -29,9 +29,7 @@ let jumpToClock=()=>{
 </script>
 
 <template>
-
-
-
+<div class="wrap">
 <el-row justify="space-between">
   <el-col :span="16">
     <el-input placeholder="请输入内容" v-model="input" clearable style="border-radius: 13px;" @click="jumpTo" />
@@ -54,7 +52,7 @@ let jumpToClock=()=>{
 </div>
 
 <homeTabsView/>
-
+</div>
 </template>
 
 <style scoped>

@@ -42,6 +42,10 @@ const router = createRouter({
     {
       path:'/clock',
       component:()=>import('../page/clockInPage.vue')
+    },
+    {
+      path:'/profile',
+      component:()=>import('../page/profilePage.vue')
     }
   ]
 })

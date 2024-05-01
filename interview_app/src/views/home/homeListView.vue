@@ -48,12 +48,12 @@ let loadMore=()=>{
   isLoadingSub.value=true
   req()
 }
-let timeId = 0;
+let timeId = 0
 
 function exec() {
   console.log(`${timeId}`)
     clearTimeout(timeId)
-    timeId = setTimeout(() => {
+    timeId = window.setTimeout(() => {
       loadMore()
     }, 2000)
 }
@@ -67,13 +67,17 @@ window.onscroll=()=>{
 //tab下面的内容
 <template>
   <el-empty v-if="isLoadingSub===true" description="加载中..."/>
-  <div class="home-list-view" v-if="isLoadingSub===false" ref="containerRef"  style="height: 500px;">
+  <div class="home-list-view" v-if="isLoadingSub===false" ref="containerRef" style="height:550px;" >
     <homeItemView v-for="(itemForIt) in list" :item="itemForIt" />
   </div>
 </template>
 
 <style scoped>
+
 .home-list-view{
+
   overflow: scroll;
+
 }
+
 </style>

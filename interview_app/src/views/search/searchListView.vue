@@ -65,7 +65,7 @@ let timeId = 0;
 function exec() {
   console.log(`${timeId}`)
   clearTimeout(timeId)
-  timeId = setTimeout(() => {
+  timeId = window.setTimeout(() => {
     loadMore()
   }, 2000)
 }

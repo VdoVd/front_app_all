@@ -211,16 +211,16 @@ window.addEventListener('message',(event)=>{
   <div class="feedback" style="background-color: white;border-radius: 15px;padding: 20px; width: 100px;font-size: 15px;" v-if="isFeedback">
     <el-row justify="center" class="text" @click="async ()=>{
       optType=1
-      const res=await collectAndLikeReq()
-      if(res){
+      const res =await collectAndLikeReq() as boolean
+      if(res===true){
         love=!love
         console.log(`like:${like}`)
       }
     }">收藏</el-row>
-    <el-row justify="center" class="text"@click="()=>{
+    <el-row justify="center" class="text"@click="async ()=>{
       optType=2
-      const res=collectAndLikeReq()
-      if(res){
+      const res= await collectAndLikeReq() as boolean
+      if(res===true){
         like=!like
       }
     }"
