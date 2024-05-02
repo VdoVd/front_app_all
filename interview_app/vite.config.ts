@@ -6,16 +6,22 @@ import VueDevTools from 'vite-plugin-vue-devtools'
 import {ElementPlusResolver} from "unplugin-vue-components/resolvers";
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
+import { AntDesignVueResolver } from 'unplugin-vue-components/resolvers';
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
     vue(),
-    VueDevTools(),
+    // VueDevTools(),
     AutoImport({
       resolvers: [ElementPlusResolver()],
     }),
     Components({
-      resolvers: [ElementPlusResolver()],
+      resolvers: [
+          ElementPlusResolver(),
+        AntDesignVueResolver({
+          importStyle: false, // css in js
+        }),
+      ],
     }),
   ],
   resolve: {

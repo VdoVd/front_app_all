@@ -1,14 +1,17 @@
 import { createRouter, createWebHistory } from 'vue-router'
+import {useUserStore} from "@/stores/userStore";
+import type {loginResponseData} from "@/common/data";
 
 // @ts-ignore
 
+// @ts-ignore
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
       path: '/login',
       name: '',
-      component: import('../page/LoginPage.vue')
+      component: import("../page/LoginPage.vue")
     },
     {
       path: '/',
@@ -26,8 +29,38 @@ const router = createRouter({
       path:'/err',
       name:'error',
       component:()=>import('../page/errorPage.vue')
+    },
+    {
+      path:'/quesD/:id',
+      component:()=>import('../page/questionDetailPage.vue'),
+      props:true
+    },
+    {
+      path:'/search',
+      component:()=>import('../page/searchPage.vue')
+    },
+    {
+      path:'/clock',
+      component:()=>import('../page/clockInPage.vue')
+    },
+    {
+      path:'/profile',
+      component:()=>import('../page/profilePage.vue')
     }
   ]
 })
+
+// router.beforeEach((to,from,next)=>{
+//   const store = useUserStore()
+//
+//   if(to.path==='/login')
+//     next()
+//
+//   if((store.userLogin as loginResponseData).token===undefined){
+//     return next('/login')
+//   }else {
+//     next()
+//   }
+// })
 
 export default router
