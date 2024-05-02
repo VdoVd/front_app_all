@@ -54,26 +54,34 @@ const req=()=>{
 
 req()
 
+let i=0
+
 let loadMore=()=>{
   console.log('loadMore')
   page.value++
-  isLoadingSub.value=true
-  req()
+  console.log(`times:${i++}`)
+  if(i>6){
+    isLoadingSub.value=true
+    req()
+    i=0
+  }
 }
-let timeId = 0;
 
-function exec() {
-  console.log(`${timeId}`)
+function exec(delay=2000) {
+  let timeId:number|null=null
+  console.log(`times:${timeId}`)
+  if(timeId!=null)
   clearTimeout(timeId)
-  timeId = window.setTimeout(() => {
-    loadMore()
-  }, 2000)
+  return function (){
+    timeId = window.setTimeout(() => {
+      loadMore()
+      timeId=null
+    }, delay)
+  }
 }
 
-window.onscroll=()=>{
-  console.log('scroll')
-  exec();
-}
+
+window.onscroll=exec(2000)
 
 </script>
 //tab下面的内容

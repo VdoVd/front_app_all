@@ -42,12 +42,18 @@ const req=()=>{
 
 req()
 
+let i=0
+
 let loadMore=()=>{
   console.log('loadMore')
   page.value++
-  isLoadingSub.value=true
-  req()
+  if(i>6){
+    isLoadingSub.value=true
+    req()
+    i=0
+  }
 }
+
 let timeId = 0
 
 function exec() {
@@ -58,11 +64,19 @@ function exec() {
     }, 2000)
 }
 
-window.onscroll=()=>{
-  console.log('scroll')
-  // exec();
-}
 
+window.addEventListener('scroll',()=>{
+  const allHeight=document.body.scrollHeight
+  const scrollTop=document.body.scrollTop
+  const clientHeight=document.body.clientHeight
+  console.log(`all height:${allHeight}`)
+  console.log(`scrollTop:${scrollTop}`)
+  console.log(`clientHeight:${clientHeight}`)
+  if(allHeight-scrollTop===clientHeight){
+    console.log('到底了')
+    exec();
+  }
+},true)
 </script>
 //tab下面的内容
 <template>
@@ -73,11 +87,7 @@ window.onscroll=()=>{
 </template>
 
 <style scoped>
-
 .home-list-view{
-
   overflow: scroll;
-
 }
-
 </style>

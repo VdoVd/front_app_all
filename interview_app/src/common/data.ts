@@ -106,3 +106,14 @@ export interface ClockInDateList {
     totalClockinNumber: number;
     clockins: ClockInDate[];
 }
+
+export interface updateUserData {
+    nickName: string;
+    avatar: string;
+    flag: boolean;
+    clockinNumbers: number;
+    clockinTotal: number;
+    id: string;
+    questionNumber: number;
+    totalTime: number;
+}
