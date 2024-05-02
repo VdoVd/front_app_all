@@ -15,7 +15,6 @@ function handleChangeUpload(file) {
   for (const [key, value] of formData){
     console.log('key:'+JSON.stringify(key), 'value:'+JSON.stringify(value))
   }
-
   upLoadFile(formData)
 
   refreshUserData()
