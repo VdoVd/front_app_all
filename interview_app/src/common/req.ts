@@ -1,5 +1,5 @@
 import axios from "axios";
-import type {ClockInData, ClockInDateList, response, TabListData, updateUserData} from "@/common/data";
+import type {ClockInData, ClockInDateList, response, StudyData, TabListData, updateUserData} from "@/common/data";
 import {useUserStore} from "@/stores/userStore";
 
 export interface loginResponseData {
@@ -98,3 +98,15 @@ export const updateAvatarAndNickName=async (avatar:string,nickName:string):Promi
     console.log(`updateAvatarAndNickName:${JSON.stringify(res)}`)
     return res.data
 }
+
+export const studyTime=async ():Promise<response<StudyData>> =>{
+    const res=await axios({
+        headers: {
+            'Authorization':`Bearer ${(useStore.userLogin as loginResponseData).token}`,
+        },
+        method: 'get',
+        url: 'https://api-harmony-teach.itheima.net/hm/studyInfo'
+    })
+    return res.data
+}
+

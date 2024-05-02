@@ -40,6 +40,12 @@ let bottomList=[
   {path:getAssetsFile('ic_mine_setting.png'),title:'设置'},
 ]
 
+let jumpTo=(index:number)=>{
+  if(index===3){
+    router.push({path:'/study'})
+  }
+}
+
 </script>
 
 <template>
@@ -93,9 +99,7 @@ let bottomList=[
 </el-row>
 
 <el-row justify="space-around" align="middle" style="background-color: white;">
-
-  <el-col :span="4" v-for="(item,index) in middleList" :key="index">
-
+  <el-col :span="4" v-for="(item,index) in middleList" :key="index" @click="jumpTo(index)" >
     <el-row>
       <el-image :src="item.path" style="width: 50px;height: 50px;"/>
     </el-row>
@@ -104,7 +108,6 @@ let bottomList=[
       <el-text>{{item.title}}</el-text>
     </el-row>
   </el-col>
-
 </el-row>
 
 <el-row style="height: 40px;"/>

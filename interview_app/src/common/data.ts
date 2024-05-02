@@ -117,3 +117,21 @@ export interface updateUserData {
     questionNumber: number;
     totalTime: number;
 }
+
+export interface StudyDataList {
+    id: string;
+    name: string;
+    total: number;
+    done: number;
+    undone: number;
+}
+
+export interface StudyDataType {
+    type: string;
+    list: StudyDataList[];
+}
+
+export interface StudyData {
+    totalTime: number;
+    studyData: StudyDataType[];
+}
