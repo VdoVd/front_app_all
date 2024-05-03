@@ -1,0 +1,1 @@
+import{_ as r}from"./_plugin-vue_export-helper-DlAUqK2U.js";import{o as e,p as o}from"./index-U8SeVnrU.js";const t={},c={class:"Error"};function s(n,_){return e(),o("div",c," error test ")}const i=r(t,[["render",s]]);export{i as default};
