@@ -16,7 +16,7 @@ onMounted(()=>{
   let values=Object.values(JSON.parse(JSON.stringify(json)))
 
   values.forEach(item=>{
-    words.value.push(item)
+    words.value.push(item as wordClassification[])
   })
 
   console.log(`keys:${JSON.stringify(keys)}`)
@@ -159,10 +159,10 @@ watch(wordsIndex,()=>{
 
   <el-row justify="start" :gutter="10">
 
-    <audio id="myAudio" controls="controls">
+<!--    <audio id="myAudio" controls="controls">-->
 
-      <source src="./dictvoice.mp3" type="audio/mp3">
-    </audio>
+<!--      <source src="./dictvoice.mp3" type="audio/mp3">-->
+<!--    </audio>-->
 
 
   </el-row>

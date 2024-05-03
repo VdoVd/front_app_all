@@ -1,13 +1,35 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import {createRouter, createWebHashHistory, createWebHistory} from 'vue-router'
+const Login=()=>import(`@/page/LoginPage.vue`)
+const Index= () => import(`@/page/IndexPage.vue`)
+
+const Home=()=>import(`@/components/HomeComponent.vue`)
+
+const Mine=()=>import(`@/components/MineComponent.vue`)
+
+const Err=()=>import(`@/page/errorPage.vue`)
+
+const Question=()=>import(`@/page/questionDetailPage.vue`)
+
+const Search=()=>import(`@/page/searchPage.vue`)
+
+const Clock=()=>import(`@/page/clockInPage.vue`)
+
+const Profile=()=>import(`@/page/profilePage.vue`)
+
+const Study=()=>import(`@/page/studyPage.vue`)
+
+const Word = ()=>import(`@/page/wordPage.vue`)
 
 // @ts-ignore
 const router = createRouter({
-  history: createWebHistory(import.meta.env.BASE_URL),
+
+  history: createWebHashHistory(),
+
   routes: [
     {
       path: '/login',
       name: '',
-      component: import("../page/LoginPage.vue")
+      component: Login
     },
     {
       path: '/',
@@ -15,41 +37,41 @@ const router = createRouter({
       // route level code-splitting
       // this generates a separate chunk (About.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
-      component: () => import('../page/IndexPage.vue'),
+      component:Index,
       children:[
-        {path:'home',component:import('../components/HomeComponent.vue')},
-        {path:'mine',component:import('../components/MineComponent.vue')}
+        {path:'home',component:Home},
+        {path:'mine',component:Mine}
       ]
     },
     {
       path:'/err',
       name:'error',
-      component:()=>import('../page/errorPage.vue')
+      component:Err
     },
     {
       path:'/quesD/:id',
-      component:()=>import('../page/questionDetailPage.vue'),
+      component:Question,
       props:true
     },
     {
       path:'/search',
-      component:()=>import('../page/searchPage.vue')
+      component:Search
     },
     {
       path:'/clock',
-      component:()=>import('../page/clockInPage.vue')
+      component:Clock
     },
     {
       path:'/profile',
-      component:()=>import('../page/profilePage.vue')
+      component:Profile
     },
     {
       path:'/study',
-      component:()=>import('../page/studyPage.vue')
+      component:Study
     },
     {
       path:'/word',
-      component:()=>import('../page/wordPage.vue')
+      component:Word
     }
   ]
 })

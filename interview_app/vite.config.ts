@@ -9,9 +9,7 @@ import Components from 'unplugin-vue-components/vite'
 import { AntDesignVueResolver } from 'unplugin-vue-components/resolvers';
 // https://vitejs.dev/config/
 export default defineConfig({
-
-
-
+  // base:'/test',
   plugins: [
     vue(),
     // VueDevTools(),
@@ -21,9 +19,9 @@ export default defineConfig({
     Components({
       resolvers: [
           ElementPlusResolver(),
-        AntDesignVueResolver({
-          importStyle: false, // css in js
-        }),
+          AntDesignVueResolver({
+            importStyle: false, // css in js
+          }),
       ],
     }),
   ],
