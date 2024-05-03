@@ -8,7 +8,7 @@ import type {updateUserData} from "@/common/data";
 const clockStore=useClockInStore()
 let img=ref(clockStore.clockIn.avatar)
 const input = ref('')
-function handleChangeUpload(file) {
+function handleChangeUpload(file:any) {
   let formData = new FormData()
   formData.append('file', file.raw)
   console.log('before file:')

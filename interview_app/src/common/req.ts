@@ -110,3 +110,13 @@ export const studyTime=async ():Promise<response<StudyData>> =>{
     return res.data
 }
 
+
+export const playReq=async (word:string)=>{
+    const res= await axios({
+        method: 'get',
+        url: `http://dict.youdao.com/dictvoice?audio=${word}&type=1`
+    })
+
+    let blob = new Blob([res.data])
+    console.log(`blob:${JSON.stringify(blob)}`)
+}

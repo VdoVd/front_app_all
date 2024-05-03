@@ -135,3 +135,12 @@ export interface StudyData {
     totalTime: number;
     studyData: StudyDataType[];
 }
+
+export interface wordClassification
+{
+    en: string;     zh: string;     down: number;     code?: string | undefined;
+}
+
+export interface allWord{
+    words: wordClassification[];
+}

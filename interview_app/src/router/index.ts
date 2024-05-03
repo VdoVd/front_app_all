@@ -46,6 +46,10 @@ const router = createRouter({
     {
       path:'/study',
       component:()=>import('../page/studyPage.vue')
+    },
+    {
+      path:'/word',
+      component:()=>import('../page/wordPage.vue')
     }
   ]
 })

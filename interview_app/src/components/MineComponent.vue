@@ -13,7 +13,10 @@ impPath.value=obj.avatar
 console.info(`img:${obj.avatar}`)
 isLoadImg.value=false
 let clockInDataClass=ref<ClockInData>({} as ClockInData)
-
+let jumpToWord=(index:number)=>{
+  if(index===0)
+  router.push({path:'/word'})
+}
 let jumpToClock=()=>{
   router.push({path:'/clock'})
 }
@@ -112,21 +115,21 @@ let jumpTo=(index:number)=>{
 
 <el-row style="height: 40px;"/>
 
-  <el-row justify="start" :gutter="40" v-for="(item,index) in bottomList" style="width: 90%;">
+<el-row justify="start" :gutter="40" v-for="(item,index) in bottomList" style="width: 90%;" @click="jumpToWord(index)">
 
-  <el-col :span="2" :offset="1">
+<el-col :span="2" :offset="1">
 
-    <el-image :src="item.path" style="height: 20px;width: 20px"/>
+<el-image :src="item.path" style="height: 20px;width: 20px"/>
 
-  </el-col>
+</el-col>
 
-  <el-col :span="12">
+<el-col :span="12">
 
-    {{item.title}}
+  {{item.title}}
 
-  </el-col>
+</el-col>
 
-  <el-row style="height: 50px;"/>
+<el-row style="height: 50px;"/>
 
 </el-row>
 
