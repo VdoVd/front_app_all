@@ -34,10 +34,10 @@ export default defineConfig({
   },
   server: {
     proxy: {
-      '/api': {
-        target: 'https://baidu.com',
+      '/dictvoice': {
+        target: 'http://dict.youdao.com',
         changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/api/, '')
+        rewrite: (path) => path.replace(/^\/dictvoice/, '')
       }
     }
   },
